@@ -1,0 +1,502 @@
+SET session_replication_role = replica;
+
+--
+-- PostgreSQL database dump
+--
+
+-- \restrict fQGY7dpPVmmwpuINlSRmvPKiSCGGjk3GUtJBPnZKWr8CaB0aOpjxjZuHPhJcbbl
+
+-- Dumped from database version 17.6
+-- Dumped by pg_dump version 17.6
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Data for Name: audit_log_entries; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."audit_log_entries" ("instance_id", "id", "payload", "created_at", "ip_address") FROM stdin;
+\.
+
+
+--
+-- Data for Name: flow_state; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."flow_state" ("id", "user_id", "auth_code", "code_challenge_method", "code_challenge", "provider_type", "provider_access_token", "provider_refresh_token", "created_at", "updated_at", "authentication_method", "auth_code_issued_at") FROM stdin;
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."users" ("instance_id", "id", "aud", "role", "email", "encrypted_password", "email_confirmed_at", "invited_at", "confirmation_token", "confirmation_sent_at", "recovery_token", "recovery_sent_at", "email_change_token_new", "email_change", "email_change_sent_at", "last_sign_in_at", "raw_app_meta_data", "raw_user_meta_data", "is_super_admin", "created_at", "updated_at", "phone", "phone_confirmed_at", "phone_change", "phone_change_token", "phone_change_sent_at", "email_change_token_current", "email_change_confirm_status", "banned_until", "reauthentication_token", "reauthentication_sent_at", "is_sso_user", "deleted_at", "is_anonymous") FROM stdin;
+\.
+
+
+--
+-- Data for Name: identities; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."identities" ("provider_id", "user_id", "identity_data", "provider", "last_sign_in_at", "created_at", "updated_at", "id") FROM stdin;
+\.
+
+
+--
+-- Data for Name: instances; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."instances" ("id", "uuid", "raw_base_config", "created_at", "updated_at") FROM stdin;
+\.
+
+
+--
+-- Data for Name: oauth_clients; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."oauth_clients" ("id", "client_secret_hash", "registration_type", "redirect_uris", "grant_types", "client_name", "client_uri", "logo_uri", "created_at", "updated_at", "deleted_at", "client_type") FROM stdin;
+\.
+
+
+--
+-- Data for Name: sessions; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."sessions" ("id", "user_id", "created_at", "updated_at", "factor_id", "aal", "not_after", "refreshed_at", "user_agent", "ip", "tag", "oauth_client_id", "refresh_token_hmac_key", "refresh_token_counter", "scopes") FROM stdin;
+\.
+
+
+--
+-- Data for Name: mfa_amr_claims; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."mfa_amr_claims" ("session_id", "created_at", "updated_at", "authentication_method", "id") FROM stdin;
+\.
+
+
+--
+-- Data for Name: mfa_factors; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."mfa_factors" ("id", "user_id", "friendly_name", "factor_type", "status", "created_at", "updated_at", "secret", "phone", "last_challenged_at", "web_authn_credential", "web_authn_aaguid", "last_webauthn_challenge_data") FROM stdin;
+\.
+
+
+--
+-- Data for Name: mfa_challenges; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."mfa_challenges" ("id", "factor_id", "created_at", "verified_at", "ip_address", "otp_code", "web_authn_session_data") FROM stdin;
+\.
+
+
+--
+-- Data for Name: oauth_authorizations; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."oauth_authorizations" ("id", "authorization_id", "client_id", "user_id", "redirect_uri", "scope", "state", "resource", "code_challenge", "code_challenge_method", "response_type", "status", "authorization_code", "created_at", "expires_at", "approved_at", "nonce") FROM stdin;
+\.
+
+
+--
+-- Data for Name: oauth_client_states; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."oauth_client_states" ("id", "provider_type", "code_verifier", "created_at") FROM stdin;
+\.
+
+
+--
+-- Data for Name: oauth_consents; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."oauth_consents" ("id", "user_id", "client_id", "scopes", "granted_at", "revoked_at") FROM stdin;
+\.
+
+
+--
+-- Data for Name: one_time_tokens; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."one_time_tokens" ("id", "user_id", "token_type", "token_hash", "relates_to", "created_at", "updated_at") FROM stdin;
+\.
+
+
+--
+-- Data for Name: refresh_tokens; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."refresh_tokens" ("instance_id", "id", "token", "user_id", "revoked", "created_at", "updated_at", "parent", "session_id") FROM stdin;
+\.
+
+
+--
+-- Data for Name: sso_providers; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."sso_providers" ("id", "resource_id", "created_at", "updated_at", "disabled") FROM stdin;
+\.
+
+
+--
+-- Data for Name: saml_providers; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."saml_providers" ("id", "sso_provider_id", "entity_id", "metadata_xml", "metadata_url", "attribute_mapping", "created_at", "updated_at", "name_id_format") FROM stdin;
+\.
+
+
+--
+-- Data for Name: saml_relay_states; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."saml_relay_states" ("id", "sso_provider_id", "request_id", "for_email", "redirect_to", "created_at", "updated_at", "flow_state_id") FROM stdin;
+\.
+
+
+--
+-- Data for Name: sso_domains; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
+--
+
+COPY "auth"."sso_domains" ("id", "sso_provider_id", "domain", "created_at", "updated_at") FROM stdin;
+\.
+
+
+--
+-- Data for Name: cabins; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "public"."cabins" ("id", "created_at", "name", "maxCapacity", "regularPrice", "discount", "description", "image") FROM stdin;
+1	2025-12-20 15:22:54.266186+00	001	2	250	50	Small luxury cabin in the woods.	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/cabin-001.jpg
+23	2025-12-23 06:49:18.015838+00	002	100	1007	100	hfghgd	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/0.5429037918205738-cabin-005.jpg
+24	2025-12-23 06:49:40.576545+00	003	30	200	200	gfdsg	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/0.9442836886411703-cabin-001.jpg
+27	2025-12-23 06:49:40.576545+00	Copy of 003	30	200	200	gfdsg	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/0.9442836886411703-cabin-001.jpg
+28	2025-12-23 06:49:18.015838+00	Copy of 002	100	1007	100	hfghgd	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/0.5429037918205738-cabin-005.jpg
+29	2025-12-20 15:22:54.266186+00	Copy of 001	2	250	50	Small luxury cabin in the woods.	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/cabin-001.jpg
+\.
+
+
+--
+-- Data for Name: guests; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "public"."guests" ("id", "created_at", "fullName", "email", "nationalID", "nationality", "countryFlag") FROM stdin;
+1	2025-12-20 15:29:52.079214+00	Ilya Meerov	test@email.com	fsdfsadfsad	Russian	\N
+\.
+
+
+--
+-- Data for Name: bookings; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "public"."bookings" ("id", "created_at", "startDate", "endDate", "numNights", "numGuests", "cabinPrice", "extrasPrice", "totalPrice", "status", "hasBreakfast", "isPaid", "observations", "cabinId", "guestId") FROM stdin;
+1	2025-12-20 16:47:33.959528+00	2025-12-22 19:43:24	2025-12-26 19:43:40	4	2	300	120	420	unconfirmed	t	t	I will arrive at 10 pm.	1	1
+\.
+
+
+--
+-- Data for Name: menu; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "public"."menu" ("id", "name", "unitPrice", "imageUrl", "soldOut", "ingredients") FROM stdin;
+1	Margherita	12	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/pizza-1.jpg	f	["tomato", "mozzarella", "basil"]
+2	Capricciosa	14	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/pizza-2.jpg	t	["tomato", "mozzarella", "ham", "mushrooms", "artichoke"]
+3	Romana	15	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/pizza-3.jpg	f	["tomato", "mozzarella", "prosciutto"]
+4	Prosciutto e Rucola	16	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/pizza-4.jpg	f	["tomato", "mozzarella", "prosciutto", "arugula"]
+5	Diavola	16	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/pizza-5.jpg	f	["tomato", "mozzarella", "spicy salami", "chili flakes"]
+6	Vegetale	13	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/pizza-6.jpg	f	["tomato", "mozzarella", "bell peppers", "onions", "mushrooms"]
+7	Napoli	16	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/pizza-7.jpg	f	["tomato", "mozzarella", "fresh tomato", "basil"]
+8	Siciliana	16	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/pizza-8.jpg	t	["tomato", "mozzarella", "anchovies", "olives", "capers"]
+9	Pepperoni	14	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/pizza-9.jpg	f	["tomato", "mozzarella", "pepperoni"]
+10	Hawaiian	15	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/pizza-10.jpg	f	["tomato", "mozzarella", "pineapple", "ham"]
+11	Spinach and Mushroom	15	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/pizza-11.jpg	f	["tomato", "mozzarella", "spinach", "mushrooms"]
+12	Mediterranean	16	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/pizza-12.jpg	f	["tomato", "mozzarella", "sun-dried tomatoes", "olives", "artichoke"]
+13	Greek	16	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/pizza-13.jpg	t	["tomato", "mozzarella", "spinach", "feta", "olives", "pepperoncini"]
+14	Abruzzese	16	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/pizza-14.jpg	f	["tomato", "mozzarella", "prosciutto", "arugula"]
+15	Pesto Chicken	16	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/pizza-15.jpg	f	["pesto", "mozzarella", "chicken", "sun-dried tomatoes", "spinach"]
+16	Eggplant Parmesan	15	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/pizza-16.jpg	f	["marinara", "mozzarella", "eggplant", "parmesan"]
+17	Roasted Veggie	15	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/pizza-17.jpg	f	["marinara", "mozzarella", "zucchini", "eggplant", "peppers", "onions"]
+18	Tofu and Mushroom	15	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/pizza-18.jpg	f	["marinara", "mozzarella", "tofu", "mushrooms", "bell peppers"]
+\.
+
+
+--
+-- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "public"."orders" ("id", "createdAt", "customer", "phone", "position", "address", "status", "cart") FROM stdin;
+\.
+
+
+--
+-- Data for Name: ordersPizza; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "public"."ordersPizza" ("shortId", "createdAt", "customer", "phone", "position", "address", "status", "cart", "estimatedDelivery", "priority", "id") FROM stdin;
+2	2025-12-23 18:20:18.870277+00	rtreter	3434534534	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Napoli", "pizzaId": 7, "quantity": 1, "unitPrice": 16, "totalPrice": 16}]	2025-12-23 19:20:18.870277+00	f	97J0XFx
+3	2025-12-23 18:20:54.436348+00	tryretytey	45125555	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Napoli", "pizzaId": 7, "quantity": 1, "unitPrice": 16, "totalPrice": 16}]	2025-12-23 19:20:54.436348+00	t	mVwmeK2
+4	2025-12-23 18:29:15.643264+00	dfgfdgfdsgf	77777527	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Prosciutto e Rucola", "pizzaId": 4, "quantity": 1, "unitPrice": 16, "totalPrice": 16}, {"name": "Romana", "pizzaId": 3, "quantity": 1, "unitPrice": 15, "totalPrice": 15}]	2025-12-23 19:29:15.643264+00	t	WJz3YNb
+5	2025-12-23 18:32:13.858132+00	ilya	777775277	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Napoli", "pizzaId": 7, "quantity": 1, "unitPrice": 16, "totalPrice": 16}, {"name": "Vegetale", "pizzaId": 6, "quantity": 1, "unitPrice": 13, "totalPrice": 13}]	2025-12-23 19:32:13.858132+00	f	NxK1Bpg
+6	2025-12-23 18:38:26.623619+00	gfhdfghdfgh	7777752	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Prosciutto e Rucola", "pizzaId": 4, "quantity": 1, "unitPrice": 16, "totalPrice": 16}]	2025-12-23 19:38:26.623619+00	f	14QWdn0
+7	2025-12-23 18:44:01.148003+00	gfhdfghdfgh	7777752	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Prosciutto e Rucola", "pizzaId": 4, "quantity": 2, "unitPrice": 16, "totalPrice": 32}]	2025-12-23 19:44:01.148003+00	t	6Hqy0qV
+8	2025-12-23 18:52:41.784119+00	fdghghfgh	77777527		gffghfghfghfh	preparing	[{"name": "Prosciutto e Rucola", "pizzaId": 4, "quantity": 1, "unitPrice": 16, "totalPrice": 16}, {"name": "Romana", "pizzaId": 3, "quantity": 1, "unitPrice": 15, "totalPrice": 15}]	2025-12-23 19:52:41.784119+00	t	uC8CN0V
+9	2025-12-23 19:08:54.052995+00	ytyrtyerty	77777527	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Romana", "pizzaId": 3, "quantity": 3, "unitPrice": 15, "totalPrice": 45}]	2025-12-23 20:08:54.052995+00	t	MYxA2ZD
+10	2025-12-23 19:17:10.353223+00	fdfdsfds	7777752	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Prosciutto e Rucola", "pizzaId": 4, "quantity": 3, "unitPrice": 16, "totalPrice": 48}]	2025-12-23 20:17:10.353223+00	t	UWVuSDu
+11	2025-12-23 19:27:09.729102+00	dfdsfsdfsd	7777752	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Prosciutto e Rucola", "pizzaId": 4, "quantity": 3, "unitPrice": 16, "totalPrice": 48}, {"name": "Romana", "pizzaId": 3, "quantity": 3, "unitPrice": 15, "totalPrice": 45}, {"name": "Margherita", "pizzaId": 1, "quantity": 4, "unitPrice": 12, "totalPrice": 48}]	2025-12-23 20:27:09.729102+00	t	PV4NdJH
+12	2025-12-23 19:45:04.751984+00	love	75454	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Eggplant Parmesan", "pizzaId": 16, "quantity": 4, "unitPrice": 15, "totalPrice": 60}, {"name": "Roasted Veggie", "pizzaId": 17, "quantity": 4, "unitPrice": 15, "totalPrice": 60}]	2025-12-23 20:45:04.751984+00	t	x3fegE5
+13	2025-12-23 19:47:52.415435+00	ivan	77777527	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Pesto Chicken", "pizzaId": 15, "quantity": 5, "unitPrice": 16, "totalPrice": 80}, {"name": "Eggplant Parmesan", "pizzaId": 16, "quantity": 7, "unitPrice": 15, "totalPrice": 105}, {"name": "Roasted Veggie", "pizzaId": 17, "quantity": 7, "unitPrice": 15, "totalPrice": 105}]	2025-12-23 20:47:52.415435+00	t	cskFrr1
+14	2025-12-23 19:50:01.148008+00	fred	45125555	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Eggplant Parmesan", "pizzaId": 16, "quantity": 7, "unitPrice": 15, "totalPrice": 105}, {"name": "Pesto Chicken", "pizzaId": 15, "quantity": 7, "unitPrice": 16, "totalPrice": 112}, {"name": "Abruzzese", "pizzaId": 14, "quantity": 7, "unitPrice": 16, "totalPrice": 112}]	2025-12-23 20:50:01.148008+00	t	WMPDzKU
+15	2025-12-23 20:09:32.598968+00	fgty	77777527	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Prosciutto e Rucola", "pizzaId": 4, "quantity": 3, "unitPrice": 16, "totalPrice": 48}, {"name": "Romana", "pizzaId": 3, "quantity": 7, "unitPrice": 15, "totalPrice": 105}]	2025-12-23 21:09:32.598968+00	t	0JmPZVJ
+16	2025-12-23 20:13:56.20649+00	jhon	77777527	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Napoli", "pizzaId": 7, "quantity": 7, "unitPrice": 16, "totalPrice": 112}, {"name": "Vegetale", "pizzaId": 6, "quantity": 7, "unitPrice": 13, "totalPrice": 91}]	2025-12-23 21:13:56.20649+00	t	yncMXme
+17	2025-12-23 20:17:27.832193+00	dfgdfg	453453	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Pesto Chicken", "pizzaId": 15, "quantity": 4, "unitPrice": 16, "totalPrice": 64}, {"name": "Abruzzese", "pizzaId": 14, "quantity": 5, "unitPrice": 16, "totalPrice": 80}, {"name": "Eggplant Parmesan", "pizzaId": 16, "quantity": 4, "unitPrice": 15, "totalPrice": 60}]	2025-12-23 21:17:27.832193+00	t	SJj4gQ7
+18	2025-12-23 21:03:25.211595+00	lon	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Napoli", "pizzaId": 7, "quantity": 7, "unitPrice": 16, "totalPrice": 112}, {"name": "Pepperoni", "pizzaId": 9, "quantity": 7, "unitPrice": 14, "totalPrice": 98}, {"name": "Hawaiian", "pizzaId": 10, "quantity": 7, "unitPrice": 15, "totalPrice": 105}]	2025-12-23 22:03:25.211595+00	t	kYVYMu8
+19	2025-12-23 21:04:24.830402+00	jane	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Pesto Chicken", "pizzaId": 15, "quantity": 7, "unitPrice": 16, "totalPrice": 112}]	2025-12-23 22:04:24.830402+00	t	QJ3UMgz
+20	2025-12-23 21:07:02.997043+00	josh	+7 (911) 246-49-97		Светлановский пр. 34 кв.77	preparing	[{"name": "Eggplant Parmesan", "pizzaId": 16, "quantity": 7, "unitPrice": 15, "totalPrice": 105}, {"name": "Roasted Veggie", "pizzaId": 17, "quantity": 7, "unitPrice": 15, "totalPrice": 105}, {"name": "Pesto Chicken", "pizzaId": 15, "quantity": 7, "unitPrice": 16, "totalPrice": 112}]	2025-12-23 22:07:02.997043+00	t	TAx1AQQ
+21	2025-12-24 04:15:30.191618+00	deen	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Roasted Veggie", "pizzaId": 17, "quantity": 7, "unitPrice": 15, "totalPrice": 105}, {"name": "Eggplant Parmesan", "pizzaId": 16, "quantity": 7, "unitPrice": 15, "totalPrice": 105}, {"name": "Pesto Chicken", "pizzaId": 15, "quantity": 7, "unitPrice": 16, "totalPrice": 112}]	2025-12-24 05:15:30.191618+00	t	9JEJ1J1
+22	2025-12-24 05:25:04.700308+00	glen	7777752	60.0219041,30.3742635	Akademicheskoe, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Napoli", "pizzaId": 7, "quantity": 5, "unitPrice": 16, "totalPrice": 80}, {"name": "Pepperoni", "pizzaId": 9, "quantity": 7, "unitPrice": 14, "totalPrice": 98}]	2025-12-24 06:25:04.700308+00	t	d3T4S9j
+23	2025-12-24 05:25:57.686841+00	u2	45125555	60.0219041,30.3742635	Akademicheskoe, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Pepperoni", "pizzaId": 9, "quantity": 7, "unitPrice": 14, "totalPrice": 98}, {"name": "Hawaiian", "pizzaId": 10, "quantity": 7, "unitPrice": 15, "totalPrice": 105}]	2025-12-24 06:25:57.686841+00	t	sFhT8Ap
+24	2025-12-24 05:27:33.508848+00	king	77777527	60.0219041,30.3742635	Akademicheskoe, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Prosciutto e Rucola", "pizzaId": 4, "quantity": 7, "unitPrice": 16, "totalPrice": 112}]	2025-12-24 06:27:33.508848+00	f	V2jS3NG
+25	2025-12-24 05:56:38.688159+00	ghj	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Tofu and Mushroom", "pizzaId": 18, "quantity": 7, "unitPrice": 15, "totalPrice": 105}, {"name": "Roasted Veggie", "pizzaId": 17, "quantity": 7, "unitPrice": 15, "totalPrice": 105}, {"name": "Eggplant Parmesan", "pizzaId": 16, "quantity": 7, "unitPrice": 15, "totalPrice": 105}, {"name": "Pesto Chicken", "pizzaId": 15, "quantity": 7, "unitPrice": 16, "totalPrice": 112}, {"name": "Abruzzese", "pizzaId": 14, "quantity": 7, "unitPrice": 16, "totalPrice": 112}]	2025-12-24 06:56:38.688159+00	t	NC8ANUg
+26	2025-12-24 08:56:28.41815+00	fred	7777752	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Vegetale", "pizzaId": 6, "quantity": 5, "unitPrice": 13, "totalPrice": 65}, {"name": "Diavola", "pizzaId": 5, "quantity": 7, "unitPrice": 16, "totalPrice": 112}]	2025-12-24 09:56:28.41815+00	t	2jkSMMn
+27	2025-12-24 08:58:24.187854+00	rick	45125555	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Pesto Chicken", "pizzaId": 15, "quantity": 7, "unitPrice": 16, "totalPrice": 112}, {"name": "Eggplant Parmesan", "pizzaId": 16, "quantity": 7, "unitPrice": 15, "totalPrice": 105}]	2025-12-24 09:58:24.187854+00	t	uYe4z90
+28	2025-12-24 09:00:11.549629+00	luis	77777527	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Napoli", "pizzaId": 7, "quantity": 7, "unitPrice": 16, "totalPrice": 112}, {"name": "Pepperoni", "pizzaId": 9, "quantity": 7, "unitPrice": 14, "totalPrice": 98}, {"name": "Hawaiian", "pizzaId": 10, "quantity": 7, "unitPrice": 15, "totalPrice": 105}]	2025-12-24 10:00:11.549629+00	t	xyZj59d
+29	2025-12-24 09:04:10.023977+00	fred	7777752	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Prosciutto e Rucola", "pizzaId": 4, "quantity": 7, "unitPrice": 16, "totalPrice": 112}]	2025-12-24 10:04:10.023977+00	t	gH0gJSK
+30	2025-12-24 09:07:42.148668+00	jack	77777527	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Abruzzese", "pizzaId": 14, "quantity": 7, "unitPrice": 16, "totalPrice": 112}, {"name": "Pesto Chicken", "pizzaId": 15, "quantity": 7, "unitPrice": 16, "totalPrice": 112}]	2025-12-24 10:07:42.148668+00	t	X9dju6A
+31	2025-12-24 09:11:44.49286+00	Clara	45125555	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Abruzzese", "pizzaId": 14, "quantity": 7, "unitPrice": 16, "totalPrice": 112}, {"name": "Roasted Veggie", "pizzaId": 17, "quantity": 10, "unitPrice": 15, "totalPrice": 150}]	2025-12-24 10:11:44.49286+00	t	9pr94XC
+32	2025-12-24 09:29:11.580165+00	kelvin	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Eggplant Parmesan", "pizzaId": 16, "quantity": 7, "unitPrice": 15, "totalPrice": 105}, {"name": "Pesto Chicken", "pizzaId": 15, "quantity": 7, "unitPrice": 16, "totalPrice": 112}, {"name": "Abruzzese", "pizzaId": 14, "quantity": 7, "unitPrice": 16, "totalPrice": 112}]	2025-12-24 10:29:11.580165+00	t	erZqT1F
+33	2025-12-24 09:30:38.991703+00	victory	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Eggplant Parmesan", "pizzaId": 16, "quantity": 7, "unitPrice": 15, "totalPrice": 105}, {"name": "Abruzzese", "pizzaId": 14, "quantity": 7, "unitPrice": 16, "totalPrice": 112}]	2025-12-24 10:30:38.991703+00	t	6tXFGfQ
+34	2025-12-24 09:52:05.537115+00	don	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Napoli", "pizzaId": 7, "quantity": 7, "unitPrice": 16, "totalPrice": 112}]	2025-12-24 10:52:05.537115+00	f	KJGZgPZ
+35	2025-12-24 09:55:45.964418+00	luk	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Romana", "pizzaId": 3, "quantity": 7, "unitPrice": 15, "totalPrice": 105}, {"name": "Margherita", "pizzaId": 1, "quantity": 7, "unitPrice": 12, "totalPrice": 84}]	2025-12-24 10:55:45.964418+00	t	upJSZea
+36	2025-12-24 10:00:09.20473+00	ghb	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Pesto Chicken", "pizzaId": 15, "quantity": 27, "unitPrice": 16, "totalPrice": 432}]	2025-12-24 11:00:09.20473+00	t	nyg5TAf
+37	2025-12-24 10:51:10.04352+00	ilya	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Abruzzese", "pizzaId": 14, "quantity": 7, "unitPrice": 16, "totalPrice": 112}, {"name": "Pesto Chicken", "pizzaId": 15, "quantity": 7, "unitPrice": 16, "totalPrice": 112}, {"name": "Eggplant Parmesan", "pizzaId": 16, "quantity": 7, "unitPrice": 15, "totalPrice": 105}]	2025-12-24 11:51:10.04352+00	t	XjqPGa1
+38	2025-12-24 10:53:15.928108+00	ghjkl	+7 (911) 246-49-97		Светлановский пр. 34 кв.77	preparing	[{"name": "Tofu and Mushroom", "pizzaId": 18, "quantity": 7, "unitPrice": 15, "totalPrice": 105}, {"name": "Roasted Veggie", "pizzaId": 17, "quantity": 7, "unitPrice": 15, "totalPrice": 105}, {"name": "Eggplant Parmesan", "pizzaId": 16, "quantity": 7, "unitPrice": 15, "totalPrice": 105}]	2025-12-24 11:53:15.928108+00	t	42ASkBj
+39	2025-12-24 11:46:47.722183+00	daniel	77777527	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Abruzzese", "pizzaId": 14, "quantity": 7, "unitPrice": 16, "totalPrice": 112}, {"name": "Pesto Chicken", "pizzaId": 15, "quantity": 7, "unitPrice": 16, "totalPrice": 112}, {"name": "Eggplant Parmesan", "pizzaId": 16, "quantity": 7, "unitPrice": 15, "totalPrice": 105}]	2025-12-24 12:46:47.722183+00	t	zB1Z4Vm
+40	2025-12-24 11:49:40.0532+00	Klavdy	45125555	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Roasted Veggie", "pizzaId": 17, "quantity": 7, "unitPrice": 15, "totalPrice": 105}, {"name": "Pesto Chicken", "pizzaId": 15, "quantity": 10, "unitPrice": 16, "totalPrice": 160}]	2025-12-24 12:49:40.0532+00	t	Yqrg3Nx
+41	2025-12-24 11:56:42.368194+00	jane Moor	7777752	59.9359488,30.3169536	Municipal Okrug 78, Saint Petersburg , Russian Federation (the)	preparing	[{"name": "Roasted Veggie", "pizzaId": 17, "quantity": 21, "unitPrice": 15, "totalPrice": 315}]	2025-12-24 12:56:42.368194+00	t	sHHtNRY
+42	2025-12-24 12:55:34.19528+00	saclur	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Vegetale", "pizzaId": 6, "quantity": 7, "unitPrice": 13, "totalPrice": 91}]	2025-12-24 13:55:34.19528+00	t	8vRmmeT
+43	2025-12-24 12:57:15.273344+00	robert	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Prosciutto e Rucola", "pizzaId": 4, "quantity": 7, "unitPrice": 16, "totalPrice": 112}, {"name": "Margherita", "pizzaId": 1, "quantity": 7, "unitPrice": 12, "totalPrice": 84}]	2025-12-24 13:57:15.273344+00	t	4Rqw8Fw
+44	2025-12-24 14:56:56.710497+00	777	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Abruzzese", "pizzaId": 14, "quantity": 7, "unitPrice": 16, "totalPrice": 112}, {"name": "Pesto Chicken", "pizzaId": 15, "quantity": 7, "unitPrice": 16, "totalPrice": 112}, {"name": "Eggplant Parmesan", "pizzaId": 16, "quantity": 7, "unitPrice": 15, "totalPrice": 105}]	2025-12-24 15:56:56.710497+00	t	M0wPnZ8
+45	2025-12-24 15:05:00.057045+00	klodia	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Prosciutto e Rucola", "pizzaId": 4, "quantity": 7, "unitPrice": 16, "totalPrice": 112}, {"name": "Romana", "pizzaId": 3, "quantity": 7, "unitPrice": 15, "totalPrice": 105}, {"name": "Margherita", "pizzaId": 1, "quantity": 7, "unitPrice": 12, "totalPrice": 84}]	2025-12-24 16:05:00.057045+00	t	6GAJGRu
+46	2025-12-24 15:07:31.543927+00	sebastian	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Romana", "pizzaId": 3, "quantity": 7, "unitPrice": 15, "totalPrice": 105}]	2025-12-24 16:07:31.543927+00	t	DQjhZWK
+47	2025-12-24 15:18:34.907056+00	leo	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Romana", "pizzaId": 3, "quantity": 7, "unitPrice": 15, "totalPrice": 105}]	2025-12-24 16:18:34.907056+00	t	fjef0t6
+48	2025-12-24 15:29:46.612639+00	hyuj	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Prosciutto e Rucola", "pizzaId": 4, "quantity": 7, "unitPrice": 16, "totalPrice": 112}, {"name": "Romana", "pizzaId": 3, "quantity": 7, "unitPrice": 15, "totalPrice": 105}]	2025-12-24 16:29:46.612639+00	t	mhR8NhH
+49	2025-12-24 15:30:47.234742+00	hyuj	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Pesto Chicken", "pizzaId": 15, "quantity": 7, "unitPrice": 16, "totalPrice": 112}]	2025-12-24 16:30:47.234742+00	t	r5FSet0
+50	2025-12-24 15:38:16.501895+00	hyuj	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Romana", "pizzaId": 3, "quantity": 7, "unitPrice": 15, "totalPrice": 105}]	2025-12-24 16:38:16.501895+00	t	pd7pMJS
+51	2025-12-24 15:41:42.841689+00	fsdfdsdf	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Romana", "pizzaId": 3, "quantity": 7, "unitPrice": 15, "totalPrice": 105}]	2025-12-24 16:41:42.841689+00	t	HMMEUaf
+52	2025-12-24 15:44:36.919412+00	fsdfdsdf	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Napoli", "pizzaId": 7, "quantity": 7, "unitPrice": 16, "totalPrice": 112}]	2025-12-24 16:44:36.919412+00	t	ExbMPKx
+53	2025-12-24 15:46:28.613788+00	fsdfdsdf	+79112464997		777	preparing	[{"name": "Romana", "pizzaId": 3, "quantity": 1, "unitPrice": 15, "totalPrice": 15}]	2025-12-24 16:46:28.613788+00	t	F5V2VdD
+54	2025-12-24 15:58:02.082853+00	ty	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Prosciutto e Rucola", "pizzaId": 4, "quantity": 7, "unitPrice": 16, "totalPrice": 112}, {"name": "Romana", "pizzaId": 3, "quantity": 7, "unitPrice": 15, "totalPrice": 105}]	2025-12-24 16:58:02.082853+00	t	6wXQ97j
+56	2025-12-24 16:18:35.607478+00	lili	+7 (911) 246-49-97		Светлановский пр. 34 кв.77	preparing	[{"name": "Spinach and Mushroom", "pizzaId": 11, "quantity": 7, "unitPrice": 15, "totalPrice": 105}, {"name": "Mediterranean", "pizzaId": 12, "quantity": 7, "unitPrice": 16, "totalPrice": 112}]	2025-12-24 17:18:35.607478+00	f	2rTF3Km
+55	2025-12-24 16:15:03.719353+00	lili	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Romana", "pizzaId": 3, "quantity": 7, "unitPrice": 15, "totalPrice": 105}]	2025-12-24 17:15:03.719353+00	t	Xdrfr7a
+57	2025-12-24 16:21:48.664514+00	trg	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Mediterranean", "pizzaId": 12, "quantity": 7, "unitPrice": 16, "totalPrice": 112}]	2025-12-24 17:21:48.664514+00	f	9C7CV9M
+58	2025-12-24 16:23:49.877671+00	trg	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Pepperoni", "pizzaId": 9, "quantity": 7, "unitPrice": 14, "totalPrice": 98}]	2025-12-24 17:23:49.877671+00	t	w82UaAj
+59	2025-12-24 16:35:33.794214+00	Clever	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Roasted Veggie", "pizzaId": 17, "quantity": 7, "unitPrice": 15, "totalPrice": 105}, {"name": "Tofu and Mushroom", "pizzaId": 18, "quantity": 7, "unitPrice": 15, "totalPrice": 105}]	2025-12-24 17:35:33.794214+00	t	fjD8xpR
+60	2025-12-24 17:53:48.50272+00	Joe	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Napoli", "pizzaId": 7, "quantity": 7, "unitPrice": 16, "totalPrice": 112}]	2025-12-24 18:53:48.50272+00	t	Vxb3tCT
+61	2025-12-24 17:54:48.839458+00	Joe	+79112464997		sadfasfa	preparing	[{"name": "Vegetale", "pizzaId": 6, "quantity": 1, "unitPrice": 13, "totalPrice": 13}]	2025-12-24 18:54:48.839458+00	t	XCy0JA6
+62	2025-12-24 17:56:28.027233+00	Joe	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Prosciutto e Rucola", "pizzaId": 4, "quantity": 7, "unitPrice": 16, "totalPrice": 112}]	2025-12-24 18:56:28.027233+00	t	pmWmYa6
+63	2025-12-24 18:39:21.941022+00	Ilya	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Prosciutto e Rucola", "pizzaId": 4, "quantity": 7, "unitPrice": 16, "totalPrice": 112}, {"name": "Romana", "pizzaId": 3, "quantity": 7, "unitPrice": 15, "totalPrice": 105}, {"name": "Margherita", "pizzaId": 1, "quantity": 7, "unitPrice": 12, "totalPrice": 84}]	2025-12-24 19:39:21.941022+00	t	kN0zH83
+64	2025-12-24 18:40:12.626563+00	Ilya	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Vegetale", "pizzaId": 6, "quantity": 7, "unitPrice": 13, "totalPrice": 91}]	2025-12-24 19:40:12.626563+00	t	u7T6pzN
+65	2025-12-24 18:52:50.134686+00	lev	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Vegetale", "pizzaId": 6, "quantity": 7, "unitPrice": 13, "totalPrice": 91}, {"name": "Napoli", "pizzaId": 7, "quantity": 7, "unitPrice": 16, "totalPrice": 112}]	2025-12-24 19:52:50.134686+00	t	tYqHTfQ
+66	2025-12-24 18:54:24.075911+00	lev	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Abruzzese", "pizzaId": 14, "quantity": 7, "unitPrice": 16, "totalPrice": 112}]	2025-12-24 19:54:24.075911+00	f	xBPTGMm
+67	2025-12-24 18:56:21.712278+00	lev	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Margherita", "pizzaId": 1, "quantity": 7, "unitPrice": 12, "totalPrice": 84}]	2025-12-24 19:56:21.712278+00	t	mv17pSm
+68	2025-12-24 19:01:51.649302+00	victory	+7 (911) 246-49-97		Светлановский пр. 34 кв.77	preparing	[{"name": "Eggplant Parmesan", "pizzaId": 16, "quantity": 7, "unitPrice": 15, "totalPrice": 105}]	2025-12-24 20:01:51.649302+00	t	b5FqMq3
+69	2025-12-24 19:13:18.363427+00	victory	+79112464997		Светлановский пр. 34 кв.77	preparing	[{"name": "Romana", "pizzaId": 3, "quantity": 7, "unitPrice": 15, "totalPrice": 105}]	2025-12-24 20:13:18.363427+00	t	Vdc3sF9
+\.
+
+
+--
+-- Data for Name: settings; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "public"."settings" ("id", "created_at", "minBookingLength", "maxBookingLength", "maxGuestsPerBooking", "breakfastPrice") FROM stdin;
+1	2025-12-20 15:35:22.927346+00	5	95	7	17
+\.
+
+
+--
+-- Data for Name: worldwise; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "public"."worldwise" ("id", "date", "position", "cityName", "country", "emoji", "notes") FROM stdin;
+\.
+
+
+--
+-- Data for Name: buckets; Type: TABLE DATA; Schema: storage; Owner: supabase_storage_admin
+--
+
+COPY "storage"."buckets" ("id", "name", "owner", "created_at", "updated_at", "public", "avif_autodetection", "file_size_limit", "allowed_mime_types", "owner_id", "type") FROM stdin;
+avatars	avatars	\N	2025-12-21 14:00:44.944849+00	2025-12-21 14:00:44.944849+00	t	f	\N	\N	\N	STANDARD
+cabin-images	cabin-images	\N	2025-12-21 14:01:40.041418+00	2025-12-21 14:01:40.041418+00	t	f	\N	\N	\N	STANDARD
+\.
+
+
+--
+-- Data for Name: buckets_analytics; Type: TABLE DATA; Schema: storage; Owner: supabase_storage_admin
+--
+
+COPY "storage"."buckets_analytics" ("name", "type", "format", "created_at", "updated_at", "id", "deleted_at") FROM stdin;
+\.
+
+
+--
+-- Data for Name: buckets_vectors; Type: TABLE DATA; Schema: storage; Owner: supabase_storage_admin
+--
+
+COPY "storage"."buckets_vectors" ("id", "type", "created_at", "updated_at") FROM stdin;
+\.
+
+
+--
+-- Data for Name: objects; Type: TABLE DATA; Schema: storage; Owner: supabase_storage_admin
+--
+
+COPY "storage"."objects" ("id", "bucket_id", "name", "owner", "created_at", "updated_at", "last_accessed_at", "metadata", "version", "owner_id", "user_metadata", "level") FROM stdin;
+a450d55c-02f6-490f-85cb-3c8466d36a6d	cabin-images	cabin-007.jpg	\N	2025-12-21 14:03:15.717695+00	2025-12-21 14:03:15.717695+00	2025-12-21 14:03:15.717695+00	{"eTag": "\\"18377cc1afd74a13dd267c495093216d-1\\"", "size": 231604, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-21T14:03:16.000Z", "contentLength": 231604, "httpStatusCode": 200}	9d5d76c1-4a57-42a5-bcc3-559042f68994	\N	\N	1
+12f33dbd-77c3-422f-a456-6b2447519db7	cabin-images	cabin-005.jpg	\N	2025-12-21 14:03:15.762193+00	2025-12-21 14:03:15.762193+00	2025-12-21 14:03:15.762193+00	{"eTag": "\\"671afbb6c6bab3546973f776f6732de3-1\\"", "size": 298446, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-21T14:03:16.000Z", "contentLength": 298446, "httpStatusCode": 200}	f5832725-094b-46f9-9f19-607d48b551ff	\N	\N	1
+f7f76a63-0b83-4cc2-8254-d900de209f23	cabin-images	cabin-006.jpg	\N	2025-12-21 14:03:15.761736+00	2025-12-21 14:03:15.761736+00	2025-12-21 14:03:15.761736+00	{"eTag": "\\"cf79d9caf48c24639ca629a06271f760-1\\"", "size": 262253, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-21T14:03:16.000Z", "contentLength": 262253, "httpStatusCode": 200}	47bafd94-1cc0-4de7-9d9b-38f17a5cbaea	\N	\N	1
+bd91dee0-0200-4665-8a01-d467017ecc11	cabin-images	cabin-001.jpg	\N	2025-12-21 14:03:15.765627+00	2025-12-21 14:03:15.765627+00	2025-12-21 14:03:15.765627+00	{"eTag": "\\"45afb2ebfe28f136a081cca47924dd54-1\\"", "size": 261067, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-21T14:03:16.000Z", "contentLength": 261067, "httpStatusCode": 200}	70457525-2877-445f-8ac7-6c82510cdb45	\N	\N	1
+fb43f42e-d2f6-4e70-abc4-b59a43fe5208	cabin-images	cabin-002.jpg	\N	2025-12-21 14:03:15.767413+00	2025-12-21 14:03:15.767413+00	2025-12-21 14:03:15.767413+00	{"eTag": "\\"9da847f783d7018791464aa4befd1cc5-1\\"", "size": 211817, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-21T14:03:16.000Z", "contentLength": 211817, "httpStatusCode": 200}	7e62e40b-79b1-4c40-ac6b-561e3158a129	\N	\N	1
+10e6e5d7-3dd9-43d0-b8d3-c3bb1b7e5218	cabin-images	cabin-003.jpg	\N	2025-12-21 14:03:15.776315+00	2025-12-21 14:03:15.776315+00	2025-12-21 14:03:15.776315+00	{"eTag": "\\"4b2b22bdcd724936b9a6dc09fe5e0fe6-1\\"", "size": 254300, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-21T14:03:16.000Z", "contentLength": 254300, "httpStatusCode": 200}	3fc4e8c2-28e0-454c-8798-4498f022bf05	\N	\N	1
+c8e91b39-8860-4c2f-b9ee-d6c084b42634	cabin-images	cabin-008.jpg	\N	2025-12-21 14:03:15.776999+00	2025-12-21 14:03:15.776999+00	2025-12-21 14:03:15.776999+00	{"eTag": "\\"9ab32ab61d756f5bce580da74e66b202-1\\"", "size": 252747, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-21T14:03:16.000Z", "contentLength": 252747, "httpStatusCode": 200}	c5647723-8cd2-4ed3-a020-3280e423c5ba	\N	\N	1
+74153a8f-cff4-4e77-9096-d13dcf56afbd	cabin-images	cabin-004.jpg	\N	2025-12-21 14:03:15.785419+00	2025-12-21 14:03:15.785419+00	2025-12-21 14:03:15.785419+00	{"eTag": "\\"d5f99c5227847b5561807cd24afd4a16-1\\"", "size": 250312, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-21T14:03:16.000Z", "contentLength": 250312, "httpStatusCode": 200}	61fe8114-ddeb-419c-9e53-f1c998dc46c0	\N	\N	1
+9a133eda-8bca-452d-b8ed-03dad322ae29	cabin-images	0.053459349249197596-cabin-003.jpg	\N	2025-12-22 15:21:02.179488+00	2025-12-22 15:21:02.179488+00	2025-12-22 15:21:02.179488+00	{"eTag": "\\"b31d3641a0223d5a698787d6ef1611e0\\"", "size": 254300, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-22T15:21:03.000Z", "contentLength": 254300, "httpStatusCode": 200}	bd9b7286-165d-45ff-9f0d-68a5081a2e3f	\N	{}	1
+74158128-28c7-4ab2-aa75-8f5130ee4da9	cabin-images	0.08288523235858003-cabin-004.jpg	\N	2025-12-22 15:22:17.381904+00	2025-12-22 15:22:17.381904+00	2025-12-22 15:22:17.381904+00	{"eTag": "\\"c43b8e6bd7abc5412fbd5eafc9985dc0\\"", "size": 250312, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-22T15:22:18.000Z", "contentLength": 250312, "httpStatusCode": 200}	73b706e6-a17b-4145-9f80-19c737a8f6d0	\N	{}	1
+b4b46183-92e2-4d17-acfe-803391250af6	cabin-images	0.23779136226468822-cabin-001.jpg	\N	2025-12-22 18:25:24.595849+00	2025-12-22 18:25:24.595849+00	2025-12-22 18:25:24.595849+00	{"eTag": "\\"70bc8192eddc7bc8aaa156219831fa10\\"", "size": 261067, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-22T18:25:25.000Z", "contentLength": 261067, "httpStatusCode": 200}	6518852f-a0c4-47bb-be3c-35f3ac275017	\N	{}	1
+945a06be-8684-4c3a-a67f-a276fd2fec55	cabin-images	0.7119813972960366-cabin-007.jpg	\N	2025-12-22 18:31:31.87102+00	2025-12-22 18:31:31.87102+00	2025-12-22 18:31:31.87102+00	{"eTag": "\\"7a2f383aa7f5f2a2ebc6d5310ab2ff6a\\"", "size": 231604, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-22T18:31:32.000Z", "contentLength": 231604, "httpStatusCode": 200}	95fd5189-3c2c-42ea-8e98-30abcda1115c	\N	{}	1
+e0de13f2-f958-4d1d-92c3-0e7c2097f30e	cabin-images	0.5597984663451813-cabin-004.jpg	\N	2025-12-23 06:06:42.159444+00	2025-12-23 06:06:42.159444+00	2025-12-23 06:06:42.159444+00	{"eTag": "\\"c43b8e6bd7abc5412fbd5eafc9985dc0\\"", "size": 250312, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T06:06:43.000Z", "contentLength": 250312, "httpStatusCode": 200}	b3af7ea8-79bb-4e22-9d74-5f16e9b1f132	\N	{}	1
+937c7747-baf8-4569-a13f-ded22b69000f	cabin-images	0.33331277098696954-cabin-002.jpg	\N	2025-12-23 06:49:18.958175+00	2025-12-23 06:49:18.958175+00	2025-12-23 06:49:18.958175+00	{"eTag": "\\"066647c2de6f1de34d0253f8fcd26ed8\\"", "size": 211817, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T06:49:19.000Z", "contentLength": 211817, "httpStatusCode": 200}	bf22eb07-a411-40db-97b3-a9eccf140c66	\N	{}	1
+8e982e98-5932-43bc-a95f-0c45d0e899e7	cabin-images	0.390331099504431-cabin-003.jpg	\N	2025-12-23 06:49:41.342238+00	2025-12-23 06:49:41.342238+00	2025-12-23 06:49:41.342238+00	{"eTag": "\\"b31d3641a0223d5a698787d6ef1611e0\\"", "size": 254300, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T06:49:42.000Z", "contentLength": 254300, "httpStatusCode": 200}	8bd67bdd-bdd9-4f11-9e25-a2feaf9d6585	\N	{}	1
+3fce6bdf-27a2-485d-b07f-bd51c06ac425	cabin-images	0.0031421752134008774-cabin-004.jpg	\N	2025-12-23 06:52:45.939155+00	2025-12-23 06:52:45.939155+00	2025-12-23 06:52:45.939155+00	{"eTag": "\\"c43b8e6bd7abc5412fbd5eafc9985dc0\\"", "size": 250312, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T06:52:46.000Z", "contentLength": 250312, "httpStatusCode": 200}	ffc8c4ff-e1ed-471c-b975-87f5eda8691c	\N	{}	1
+5aab63e7-9cdf-489b-8a63-c0f5004a462b	cabin-images	0.8274113780689488-cabin-005.jpg	\N	2025-12-23 06:54:10.401628+00	2025-12-23 06:54:10.401628+00	2025-12-23 06:54:10.401628+00	{"eTag": "\\"f0708351f7c8e59dae5e3517a36e7e16\\"", "size": 298446, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T06:54:11.000Z", "contentLength": 298446, "httpStatusCode": 200}	73f5e80c-ac15-496a-b7c9-7412dbdb4b55	\N	{}	1
+dee805d0-cc37-4cc9-9bcb-77702750d478	cabin-images	0.3277346644453196-cabin-008.jpg	\N	2025-12-23 06:54:52.280164+00	2025-12-23 06:54:52.280164+00	2025-12-23 06:54:52.280164+00	{"eTag": "\\"c4c9d33aabf06bdd7cb18fbef5837a7f\\"", "size": 252747, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T06:54:53.000Z", "contentLength": 252747, "httpStatusCode": 200}	72f5d5de-cd33-46a7-8b53-e8432b6ba82f	\N	{}	1
+05cfbf2f-49dd-4b85-b21a-a7f838bfd3f0	cabin-images	0.9442836886411703-cabin-001.jpg	\N	2025-12-23 06:55:44.01118+00	2025-12-23 06:55:44.01118+00	2025-12-23 06:55:44.01118+00	{"eTag": "\\"70bc8192eddc7bc8aaa156219831fa10\\"", "size": 261067, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T06:55:44.000Z", "contentLength": 261067, "httpStatusCode": 200}	8728c90d-3823-46da-bc0c-3db3eeff4c3f	\N	{}	1
+b249f206-6858-4ad2-9deb-3c477a2db7f4	cabin-images	0.7786969860511687-cabin-004.jpg	\N	2025-12-23 07:09:22.760068+00	2025-12-23 07:09:22.760068+00	2025-12-23 07:09:22.760068+00	{"eTag": "\\"c43b8e6bd7abc5412fbd5eafc9985dc0\\"", "size": 250312, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T07:09:23.000Z", "contentLength": 250312, "httpStatusCode": 200}	54f586c7-28c4-4713-805d-2d51b66a23fd	\N	{}	1
+655ad6ea-8d44-4c6e-9512-a4ecd1428755	cabin-images	0.5429037918205738-cabin-005.jpg	\N	2025-12-23 07:16:59.04997+00	2025-12-23 07:16:59.04997+00	2025-12-23 07:16:59.04997+00	{"eTag": "\\"f0708351f7c8e59dae5e3517a36e7e16\\"", "size": 298446, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T07:16:59.000Z", "contentLength": 298446, "httpStatusCode": 200}	1ccd187d-6000-447f-bf51-354658eed89f	\N	{}	1
+5bd9290e-6724-4558-8946-e88a30429d90	cabin-images	pizza-12.jpg	\N	2025-12-23 12:01:58.421391+00	2025-12-23 12:01:58.421391+00	2025-12-23 12:01:58.421391+00	{"eTag": "\\"d83386c703b490c639b3d360f8d77d0c-1\\"", "size": 15660, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:58.000Z", "contentLength": 15660, "httpStatusCode": 200}	49bc06c2-08a7-4442-bb1e-d4608e241e1e	\N	\N	1
+54a83d67-bcf7-4970-9dc3-22c672d9b796	cabin-images	pizza-5.jpg	\N	2025-12-23 12:01:59.131235+00	2025-12-23 12:01:59.131235+00	2025-12-23 12:01:59.131235+00	{"eTag": "\\"a85f789d9e69d8a1b8abc24bbf07059f-1\\"", "size": 14107, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:59.000Z", "contentLength": 14107, "httpStatusCode": 200}	8448f509-314a-4bd8-87ad-2c08a909019b	\N	\N	1
+61b50c51-ee1c-4113-82b6-23add5990110	cabin-images	pizza-16.jpg	\N	2025-12-23 12:01:58.297272+00	2025-12-23 12:01:58.297272+00	2025-12-23 12:01:58.297272+00	{"eTag": "\\"010585837ec56018c6918392286832cc-1\\"", "size": 13996, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:58.000Z", "contentLength": 13996, "httpStatusCode": 200}	61ca1aa0-0cb8-4135-afac-0408761c09c9	\N	\N	1
+4762522f-3aa7-4b1d-ab71-91bc6c872448	cabin-images	pizza-8.jpg	\N	2025-12-23 12:01:59.095028+00	2025-12-23 12:01:59.095028+00	2025-12-23 12:01:59.095028+00	{"eTag": "\\"fa0c4c01ce5af0414d1f49ce4cac2b75-1\\"", "size": 12193, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:59.000Z", "contentLength": 12193, "httpStatusCode": 200}	df1b0d97-6f23-4c9f-833e-aa7fd8506307	\N	\N	1
+885668f7-4234-44b6-b380-9a1d5728422e	cabin-images	pizza-9.jpg	\N	2025-12-23 12:01:58.171612+00	2025-12-23 12:01:58.171612+00	2025-12-23 12:01:58.171612+00	{"eTag": "\\"1b69ef1d7cec0e809fc64285e331124e-1\\"", "size": 15989, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:58.000Z", "contentLength": 15989, "httpStatusCode": 200}	8e7cb031-b129-4fe8-91d9-09239f0ab8d7	\N	\N	1
+ce68191c-4363-4bdb-b45b-8e4c6ee72448	cabin-images	pizza-13.jpg	\N	2025-12-23 12:01:58.19019+00	2025-12-23 12:01:58.19019+00	2025-12-23 12:01:58.19019+00	{"eTag": "\\"45797bc8f4f1154ada58f0a5617f55bc-1\\"", "size": 10456, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:58.000Z", "contentLength": 10456, "httpStatusCode": 200}	04e4ae62-c8fc-4f48-89cc-74e70ee402a9	\N	\N	1
+93490079-e401-451b-a278-2305cbfdbf00	cabin-images	pizza-17.jpg	\N	2025-12-23 12:01:58.211039+00	2025-12-23 12:01:58.211039+00	2025-12-23 12:01:58.211039+00	{"eTag": "\\"a4e7396877b0615684084d20774fd058-1\\"", "size": 17570, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:58.000Z", "contentLength": 17570, "httpStatusCode": 200}	e7c0e5e6-88b4-4897-afc4-529c4c14bce3	\N	\N	1
+c20fcce5-b135-4e39-afc1-0040be359a67	cabin-images	pizza-11.jpg	\N	2025-12-23 12:01:58.245347+00	2025-12-23 12:01:58.245347+00	2025-12-23 12:01:58.245347+00	{"eTag": "\\"d1d6ea4110b8a9316e7bfe0269a4bfc1-1\\"", "size": 15119, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:58.000Z", "contentLength": 15119, "httpStatusCode": 200}	1995f169-5619-4c88-af37-ebf7b9074fea	\N	\N	1
+d81fb981-4c5f-4b58-961c-ac27a85f388e	cabin-images	pizza-6.jpg	\N	2025-12-23 12:01:59.181196+00	2025-12-23 12:01:59.181196+00	2025-12-23 12:01:59.181196+00	{"eTag": "\\"181604d10326474c0c86904198624812-1\\"", "size": 15540, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:59.000Z", "contentLength": 15540, "httpStatusCode": 200}	ecb470e7-3fef-4f68-bb03-b6ea35db66b8	\N	\N	1
+a45a82bc-e25d-4543-b25e-0bb18fa50ab4	cabin-images	pizza-14.jpg	\N	2025-12-23 12:01:58.416319+00	2025-12-23 12:01:58.416319+00	2025-12-23 12:01:58.416319+00	{"eTag": "\\"467bbccab612e3601eb6dbdbbbc73bdf-1\\"", "size": 9692, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:58.000Z", "contentLength": 9692, "httpStatusCode": 200}	1e490909-6b48-41f6-a73c-96fdded87753	\N	\N	1
+e97641bf-d08a-4059-90cf-daead0e97f63	cabin-images	pizza-7.jpg	\N	2025-12-23 12:01:59.275612+00	2025-12-23 12:01:59.275612+00	2025-12-23 12:01:59.275612+00	{"eTag": "\\"dcfa0a5b677f14a8d3901fb91cdc5713-1\\"", "size": 13417, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:59.000Z", "contentLength": 13417, "httpStatusCode": 200}	58ff4a8b-14fa-41b2-bce9-85fbba6a2e33	\N	\N	1
+438c7973-a3af-4ad0-8261-f3db1a431d60	cabin-images	pizza-10.jpg	\N	2025-12-23 12:01:58.201268+00	2025-12-23 12:01:58.201268+00	2025-12-23 12:01:58.201268+00	{"eTag": "\\"3169e9e4bd51d773cdc30d088002c1e3-1\\"", "size": 14368, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:58.000Z", "contentLength": 14368, "httpStatusCode": 200}	3362d519-5793-4c6f-ac4a-d4f124cd1bf7	\N	\N	1
+162e4a3e-11ea-42dc-b1a8-0dd22024fa8d	cabin-images	pizza-3.jpg	\N	2025-12-23 12:01:59.166007+00	2025-12-23 12:01:59.166007+00	2025-12-23 12:01:59.166007+00	{"eTag": "\\"e3ff1c04745315ada32c41f0a410a6c1-1\\"", "size": 13171, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:59.000Z", "contentLength": 13171, "httpStatusCode": 200}	90b1b1b2-a0db-43ff-b8d5-b37c2c22ce06	\N	\N	1
+56486a63-dd14-44b5-bda7-e8bbba232036	cabin-images	pizza-1.jpg	\N	2025-12-23 12:01:59.176905+00	2025-12-23 12:01:59.176905+00	2025-12-23 12:01:59.176905+00	{"eTag": "\\"59c65371f71478019b93a42a1fc1d243-1\\"", "size": 16357, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:59.000Z", "contentLength": 16357, "httpStatusCode": 200}	0ecb3ae3-9bc0-4bb0-a932-9ae3d480140d	\N	\N	1
+a6ef8a32-9b9b-4071-9383-a9cccf9bf9ec	cabin-images	pizza-15.jpg	\N	2025-12-23 12:01:58.241451+00	2025-12-23 12:01:58.241451+00	2025-12-23 12:01:58.241451+00	{"eTag": "\\"5879a93cfefab74334f4fc125b4b3a2e-1\\"", "size": 15269, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:58.000Z", "contentLength": 15269, "httpStatusCode": 200}	637c618b-73a4-4edd-98ea-c7fc94c36565	\N	\N	1
+574ade4f-79b0-48c2-8b8e-c36b4b73994c	cabin-images	pizza-18.jpg	\N	2025-12-23 12:01:58.427586+00	2025-12-23 12:01:58.427586+00	2025-12-23 12:01:58.427586+00	{"eTag": "\\"f018def80ea9a4700f1b19a8a05babbb-1\\"", "size": 15607, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:58.000Z", "contentLength": 15607, "httpStatusCode": 200}	719f3c3f-064e-4f57-8189-4dcf23c0c98c	\N	\N	1
+bbb7cb4c-657d-467d-8c2b-0c65b3d46c33	cabin-images	pizza-2.jpg	\N	2025-12-23 12:01:59.279959+00	2025-12-23 12:01:59.279959+00	2025-12-23 12:01:59.279959+00	{"eTag": "\\"e3a376c3e52a2fa9298619c6347396c4-1\\"", "size": 14673, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:59.000Z", "contentLength": 14673, "httpStatusCode": 200}	7c691398-9923-4597-b56c-a744eea1c8e2	\N	\N	1
+913fa6be-798f-4d3c-a20d-8bb5ba072e4f	cabin-images	pizza-4.jpg	\N	2025-12-23 12:01:59.170347+00	2025-12-23 12:01:59.170347+00	2025-12-23 12:01:59.170347+00	{"eTag": "\\"c20f0e1a6ddbc65a87af287593831087-1\\"", "size": 13253, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:59.000Z", "contentLength": 13253, "httpStatusCode": 200}	9044eb13-1935-4480-9f19-76cc16ecdce2	\N	\N	1
+\.
+
+
+--
+-- Data for Name: prefixes; Type: TABLE DATA; Schema: storage; Owner: supabase_storage_admin
+--
+
+COPY "storage"."prefixes" ("bucket_id", "name", "created_at", "updated_at") FROM stdin;
+\.
+
+
+--
+-- Data for Name: s3_multipart_uploads; Type: TABLE DATA; Schema: storage; Owner: supabase_storage_admin
+--
+
+COPY "storage"."s3_multipart_uploads" ("id", "in_progress_size", "upload_signature", "bucket_id", "key", "version", "owner_id", "created_at", "user_metadata") FROM stdin;
+\.
+
+
+--
+-- Data for Name: s3_multipart_uploads_parts; Type: TABLE DATA; Schema: storage; Owner: supabase_storage_admin
+--
+
+COPY "storage"."s3_multipart_uploads_parts" ("id", "upload_id", "size", "part_number", "bucket_id", "key", "etag", "owner_id", "version", "created_at") FROM stdin;
+\.
+
+
+--
+-- Data for Name: vector_indexes; Type: TABLE DATA; Schema: storage; Owner: supabase_storage_admin
+--
+
+COPY "storage"."vector_indexes" ("id", "name", "bucket_id", "data_type", "dimension", "distance_metric", "metadata_configuration", "created_at", "updated_at") FROM stdin;
+\.
+
+
+--
+-- Name: refresh_tokens_id_seq; Type: SEQUENCE SET; Schema: auth; Owner: supabase_auth_admin
+--
+
+SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 1, false);
+
+
+--
+-- Name: bookings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"public"."bookings_id_seq"', 1, true);
+
+
+--
+-- Name: cabins_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"public"."cabins_id_seq"', 29, true);
+
+
+--
+-- Name: guests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"public"."guests_id_seq"', 1, true);
+
+
+--
+-- Name: orders-pizza_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"public"."orders-pizza_id_seq"', 69, true);
+
+
+--
+-- Name: orders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"public"."orders_id_seq"', 1, false);
+
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"public"."settings_id_seq"', 1, true);
+
+
+--
+-- Name: worldwise_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"public"."worldwise_id_seq"', 82, true);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+-- \unrestrict fQGY7dpPVmmwpuINlSRmvPKiSCGGjk3GUtJBPnZKWr8CaB0aOpjxjZuHPhJcbbl
+
+RESET ALL;
