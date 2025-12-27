@@ -432,7 +432,15 @@ ALTER TABLE "public"."bookings" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "public"."cabins" ENABLE ROW LEVEL SECURITY;
 
 
+CREATE POLICY "delete all" ON "public"."bookings" FOR DELETE USING (true);
+
+
+
 ALTER TABLE "public"."guests" ENABLE ROW LEVEL SECURITY;
+
+
+CREATE POLICY "insert all" ON "public"."bookings" FOR INSERT WITH CHECK (true);
+
 
 
 ALTER TABLE "public"."menu" ENABLE ROW LEVEL SECURITY;
@@ -445,6 +453,10 @@ ALTER TABLE "public"."ordersPizza" ENABLE ROW LEVEL SECURITY;
 
 
 ALTER TABLE "public"."settings" ENABLE ROW LEVEL SECURITY;
+
+
+CREATE POLICY "update all" ON "public"."bookings" FOR UPDATE USING (true) WITH CHECK (true);
+
 
 
 ALTER TABLE "public"."worldwise" ENABLE ROW LEVEL SECURITY;

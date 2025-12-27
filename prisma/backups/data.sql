@@ -4,7 +4,7 @@ SET session_replication_role = replica;
 -- PostgreSQL database dump
 --
 
--- \restrict v7ne2FuuXitWxsPqq6iemutzWsG10H9rK5VSU1SlQe999J5afm5NcPRgAcbW9Nc
+-- \restrict c87yTFHz9up9Ss4yyqqvXr8Ht2TfChwWXax2iZt7o0w3Pxied3btickliv3LzGC
 
 -- Dumped from database version 17.6
 -- Dumped by pg_dump version 17.6
@@ -179,11 +179,10 @@ COPY "auth"."sso_domains" ("id", "sso_provider_id", "domain", "created_at", "upd
 
 COPY "public"."cabins" ("id", "created_at", "name", "maxCapacity", "regularPrice", "discount", "description", "image") FROM stdin;
 1	2025-12-20 15:22:54.266186+00	001	2	250	50	Small luxury cabin in the woods.	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/cabin-001.jpg
-29	2025-12-20 15:22:54.266186+00	Copy of 001	2	250	50	Small luxury cabin in the woods.	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/cabin-001.jpg
-24	2025-12-23 06:49:40.576545+00	003	30	200	200	gfdsg	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/0.9442836886411703-cabin-001.jpg
-27	2025-12-23 06:49:40.576545+00	Copy of 003	30	200	200	gfdsg	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/0.9442836886411703-cabin-001.jpg
-31	2025-12-25 15:12:08.877598+00	ILYA MEEROV77	200	400	250	777	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/0.045330928123713976-cabin-006.jpg
-23	2025-12-23 06:49:18.015838+00	002	100	10077	100	hfghgd	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/0.5429037918205738-cabin-005.jpg
+37	2025-12-26 14:52:20.580071+00	002	5	700	0	777	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/0.29019639175003187-cabin-002.jpg
+38	2025-12-26 14:53:11.339087+00	003	10	200	0	777	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/0.7753337526251579-cabin-003.jpg
+39	2025-12-26 15:11:23.373285+00	004	10	500	0	777	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/0.4603935280871514-cabin-004.jpg
+40	2025-12-26 15:13:32.594298+00	005	12	73	5	yyy	https://sspsbllbwsxkhzljwccx.supabase.co/storage/v1/object/public/cabin-images/0.6024991047253926-cabin-005.jpg
 \.
 
 
@@ -193,6 +192,7 @@ COPY "public"."cabins" ("id", "created_at", "name", "maxCapacity", "regularPrice
 
 COPY "public"."guests" ("id", "created_at", "fullName", "email", "nationalID", "nationality", "countryFlag") FROM stdin;
 1	2025-12-20 15:29:52.079214+00	Ilya Meerov	test@email.com	fsdfsadfsad	Russian	\N
+2	2025-12-26 15:51:14.586479+00	Steven Williams	test@test.com	sdfsdfdsa	portugal	\N
 \.
 
 
@@ -202,6 +202,7 @@ COPY "public"."guests" ("id", "created_at", "fullName", "email", "nationalID", "
 
 COPY "public"."bookings" ("id", "created_at", "startDate", "endDate", "numNights", "numGuests", "cabinPrice", "extrasPrice", "totalPrice", "status", "hasBreakfast", "isPaid", "observations", "cabinId", "guestId") FROM stdin;
 1	2025-12-20 16:47:33.959528+00	2025-12-22 19:43:24	2025-12-26 19:43:40	4	2	300	120	420	unconfirmed	t	t	I will arrive at 10 pm.	1	1
+2	2025-12-26 15:54:20.971635+00	2025-12-29 18:51:46	2026-01-10 18:52:03	2	4	500	100	600	checked-in	t	t	\N	38	2
 \.
 
 
@@ -329,15 +330,21 @@ dee805d0-cc37-4cc9-9bcb-77702750d478	cabin-images	0.3277346644453196-cabin-008.j
 05cfbf2f-49dd-4b85-b21a-a7f838bfd3f0	cabin-images	0.9442836886411703-cabin-001.jpg	\N	2025-12-23 06:55:44.01118+00	2025-12-23 06:55:44.01118+00	2025-12-23 06:55:44.01118+00	{"eTag": "\\"70bc8192eddc7bc8aaa156219831fa10\\"", "size": 261067, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T06:55:44.000Z", "contentLength": 261067, "httpStatusCode": 200}	8728c90d-3823-46da-bc0c-3db3eeff4c3f	\N	{}	1
 b249f206-6858-4ad2-9deb-3c477a2db7f4	cabin-images	0.7786969860511687-cabin-004.jpg	\N	2025-12-23 07:09:22.760068+00	2025-12-23 07:09:22.760068+00	2025-12-23 07:09:22.760068+00	{"eTag": "\\"c43b8e6bd7abc5412fbd5eafc9985dc0\\"", "size": 250312, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T07:09:23.000Z", "contentLength": 250312, "httpStatusCode": 200}	54f586c7-28c4-4713-805d-2d51b66a23fd	\N	{}	1
 655ad6ea-8d44-4c6e-9512-a4ecd1428755	cabin-images	0.5429037918205738-cabin-005.jpg	\N	2025-12-23 07:16:59.04997+00	2025-12-23 07:16:59.04997+00	2025-12-23 07:16:59.04997+00	{"eTag": "\\"f0708351f7c8e59dae5e3517a36e7e16\\"", "size": 298446, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T07:16:59.000Z", "contentLength": 298446, "httpStatusCode": 200}	1ccd187d-6000-447f-bf51-354658eed89f	\N	{}	1
+72849e5c-d10b-4814-8c98-64a758e9fddf	cabin-images	0.3051190227676589-cabin-005.jpg	\N	2025-12-26 12:08:41.536353+00	2025-12-26 12:08:41.536353+00	2025-12-26 12:08:41.536353+00	{"eTag": "\\"f0708351f7c8e59dae5e3517a36e7e16\\"", "size": 298446, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-26T12:08:42.000Z", "contentLength": 298446, "httpStatusCode": 200}	b09363b4-f4c9-47c1-87d8-9c5e2b51b8a2	\N	{}	1
 5bd9290e-6724-4558-8946-e88a30429d90	cabin-images	pizza-12.jpg	\N	2025-12-23 12:01:58.421391+00	2025-12-23 12:01:58.421391+00	2025-12-23 12:01:58.421391+00	{"eTag": "\\"d83386c703b490c639b3d360f8d77d0c-1\\"", "size": 15660, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:58.000Z", "contentLength": 15660, "httpStatusCode": 200}	49bc06c2-08a7-4442-bb1e-d4608e241e1e	\N	\N	1
 54a83d67-bcf7-4970-9dc3-22c672d9b796	cabin-images	pizza-5.jpg	\N	2025-12-23 12:01:59.131235+00	2025-12-23 12:01:59.131235+00	2025-12-23 12:01:59.131235+00	{"eTag": "\\"a85f789d9e69d8a1b8abc24bbf07059f-1\\"", "size": 14107, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:59.000Z", "contentLength": 14107, "httpStatusCode": 200}	8448f509-314a-4bd8-87ad-2c08a909019b	\N	\N	1
+a3084fd3-92ed-49a9-9707-9490d59ffc6a	cabin-images	0.5976029331364052-cabin-005.jpg	\N	2025-12-26 13:00:20.148394+00	2025-12-26 13:00:20.148394+00	2025-12-26 13:00:20.148394+00	{"eTag": "\\"f0708351f7c8e59dae5e3517a36e7e16\\"", "size": 298446, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-26T13:00:21.000Z", "contentLength": 298446, "httpStatusCode": 200}	b0e7779f-ae98-404f-b4b8-5f54476fd4d7	\N	{}	1
 61b50c51-ee1c-4113-82b6-23add5990110	cabin-images	pizza-16.jpg	\N	2025-12-23 12:01:58.297272+00	2025-12-23 12:01:58.297272+00	2025-12-23 12:01:58.297272+00	{"eTag": "\\"010585837ec56018c6918392286832cc-1\\"", "size": 13996, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:58.000Z", "contentLength": 13996, "httpStatusCode": 200}	61ca1aa0-0cb8-4135-afac-0408761c09c9	\N	\N	1
 4762522f-3aa7-4b1d-ab71-91bc6c872448	cabin-images	pizza-8.jpg	\N	2025-12-23 12:01:59.095028+00	2025-12-23 12:01:59.095028+00	2025-12-23 12:01:59.095028+00	{"eTag": "\\"fa0c4c01ce5af0414d1f49ce4cac2b75-1\\"", "size": 12193, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:59.000Z", "contentLength": 12193, "httpStatusCode": 200}	df1b0d97-6f23-4c9f-833e-aa7fd8506307	\N	\N	1
+ba9fb163-15b0-4101-9cf3-d4f32fa05d2e	cabin-images	0.29019639175003187-cabin-002.jpg	\N	2025-12-26 14:52:21.542446+00	2025-12-26 14:52:21.542446+00	2025-12-26 14:52:21.542446+00	{"eTag": "\\"066647c2de6f1de34d0253f8fcd26ed8\\"", "size": 211817, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-26T14:52:22.000Z", "contentLength": 211817, "httpStatusCode": 200}	cc6f2ba8-0b15-4363-a9c3-c04a1a37d4ec	\N	{}	1
+2760db86-9a7e-4650-8c27-dbb4ca629259	cabin-images	0.7753337526251579-cabin-003.jpg	\N	2025-12-26 14:53:12.108741+00	2025-12-26 14:53:12.108741+00	2025-12-26 14:53:12.108741+00	{"eTag": "\\"b31d3641a0223d5a698787d6ef1611e0\\"", "size": 254300, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-26T14:53:13.000Z", "contentLength": 254300, "httpStatusCode": 200}	b3e31d68-5928-4b82-a4f4-4a98a5412648	\N	{}	1
+15b545c0-6bca-418a-93aa-5d262675a280	cabin-images	0.4603935280871514-cabin-004.jpg	\N	2025-12-26 15:11:24.427732+00	2025-12-26 15:11:24.427732+00	2025-12-26 15:11:24.427732+00	{"eTag": "\\"c43b8e6bd7abc5412fbd5eafc9985dc0\\"", "size": 250312, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-26T15:11:25.000Z", "contentLength": 250312, "httpStatusCode": 200}	7cbfd220-a4f8-4e55-b306-10609495eff8	\N	{}	1
 885668f7-4234-44b6-b380-9a1d5728422e	cabin-images	pizza-9.jpg	\N	2025-12-23 12:01:58.171612+00	2025-12-23 12:01:58.171612+00	2025-12-23 12:01:58.171612+00	{"eTag": "\\"1b69ef1d7cec0e809fc64285e331124e-1\\"", "size": 15989, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:58.000Z", "contentLength": 15989, "httpStatusCode": 200}	8e7cb031-b129-4fe8-91d9-09239f0ab8d7	\N	\N	1
 ce68191c-4363-4bdb-b45b-8e4c6ee72448	cabin-images	pizza-13.jpg	\N	2025-12-23 12:01:58.19019+00	2025-12-23 12:01:58.19019+00	2025-12-23 12:01:58.19019+00	{"eTag": "\\"45797bc8f4f1154ada58f0a5617f55bc-1\\"", "size": 10456, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:58.000Z", "contentLength": 10456, "httpStatusCode": 200}	04e4ae62-c8fc-4f48-89cc-74e70ee402a9	\N	\N	1
 93490079-e401-451b-a278-2305cbfdbf00	cabin-images	pizza-17.jpg	\N	2025-12-23 12:01:58.211039+00	2025-12-23 12:01:58.211039+00	2025-12-23 12:01:58.211039+00	{"eTag": "\\"a4e7396877b0615684084d20774fd058-1\\"", "size": 17570, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:58.000Z", "contentLength": 17570, "httpStatusCode": 200}	e7c0e5e6-88b4-4897-afc4-529c4c14bce3	\N	\N	1
 c20fcce5-b135-4e39-afc1-0040be359a67	cabin-images	pizza-11.jpg	\N	2025-12-23 12:01:58.245347+00	2025-12-23 12:01:58.245347+00	2025-12-23 12:01:58.245347+00	{"eTag": "\\"d1d6ea4110b8a9316e7bfe0269a4bfc1-1\\"", "size": 15119, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:58.000Z", "contentLength": 15119, "httpStatusCode": 200}	1995f169-5619-4c88-af37-ebf7b9074fea	\N	\N	1
 d81fb981-4c5f-4b58-961c-ac27a85f388e	cabin-images	pizza-6.jpg	\N	2025-12-23 12:01:59.181196+00	2025-12-23 12:01:59.181196+00	2025-12-23 12:01:59.181196+00	{"eTag": "\\"181604d10326474c0c86904198624812-1\\"", "size": 15540, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:59.000Z", "contentLength": 15540, "httpStatusCode": 200}	ecb470e7-3fef-4f68-bb03-b6ea35db66b8	\N	\N	1
+23931af9-4a6b-4e69-8797-88e427f24015	cabin-images	0.6024991047253926-cabin-005.jpg	\N	2025-12-26 15:13:33.60438+00	2025-12-26 15:13:33.60438+00	2025-12-26 15:13:33.60438+00	{"eTag": "\\"f0708351f7c8e59dae5e3517a36e7e16\\"", "size": 298446, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-26T15:13:34.000Z", "contentLength": 298446, "httpStatusCode": 200}	c9458bb4-6244-4657-9c5d-47eab66872f9	\N	{}	1
 a45a82bc-e25d-4543-b25e-0bb18fa50ab4	cabin-images	pizza-14.jpg	\N	2025-12-23 12:01:58.416319+00	2025-12-23 12:01:58.416319+00	2025-12-23 12:01:58.416319+00	{"eTag": "\\"467bbccab612e3601eb6dbdbbbc73bdf-1\\"", "size": 9692, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:58.000Z", "contentLength": 9692, "httpStatusCode": 200}	1e490909-6b48-41f6-a73c-96fdded87753	\N	\N	1
 e97641bf-d08a-4059-90cf-daead0e97f63	cabin-images	pizza-7.jpg	\N	2025-12-23 12:01:59.275612+00	2025-12-23 12:01:59.275612+00	2025-12-23 12:01:59.275612+00	{"eTag": "\\"dcfa0a5b677f14a8d3901fb91cdc5713-1\\"", "size": 13417, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:59.000Z", "contentLength": 13417, "httpStatusCode": 200}	58ff4a8b-14fa-41b2-bce9-85fbba6a2e33	\N	\N	1
 438c7973-a3af-4ad0-8261-f3db1a431d60	cabin-images	pizza-10.jpg	\N	2025-12-23 12:01:58.201268+00	2025-12-23 12:01:58.201268+00	2025-12-23 12:01:58.201268+00	{"eTag": "\\"3169e9e4bd51d773cdc30d088002c1e3-1\\"", "size": 14368, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2025-12-23T12:01:58.000Z", "contentLength": 14368, "httpStatusCode": 200}	3362d519-5793-4c6f-ac4a-d4f124cd1bf7	\N	\N	1
@@ -393,21 +400,21 @@ SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 1, false);
 -- Name: bookings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('"public"."bookings_id_seq"', 1, true);
+SELECT pg_catalog.setval('"public"."bookings_id_seq"', 2, true);
 
 
 --
 -- Name: cabins_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('"public"."cabins_id_seq"', 31, true);
+SELECT pg_catalog.setval('"public"."cabins_id_seq"', 40, true);
 
 
 --
 -- Name: guests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('"public"."guests_id_seq"', 1, true);
+SELECT pg_catalog.setval('"public"."guests_id_seq"', 2, true);
 
 
 --
@@ -442,6 +449,6 @@ SELECT pg_catalog.setval('"public"."worldwise_id_seq"', 82, true);
 -- PostgreSQL database dump complete
 --
 
--- \unrestrict v7ne2FuuXitWxsPqq6iemutzWsG10H9rK5VSU1SlQe999J5afm5NcPRgAcbW9Nc
+-- \unrestrict c87yTFHz9up9Ss4yyqqvXr8Ht2TfChwWXax2iZt7o0w3Pxied3btickliv3LzGC
 
 RESET ALL;
